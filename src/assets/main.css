@@ -1,0 +1,28 @@
+@import "./base.css";
+
+#app {
+  max-width: 1280px;
+  margin: auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+
+a,
+.a {
+  text-decoration: none;
+}
+
+/* @media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+    text-decoration: none;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: auto;
+    padding: 0 2rem;
+  }
+} */
