@@ -5,7 +5,7 @@
       <div class="about-me-profile">
         <img
           id="profile1"
-          src="src\assets\Nick_circle_2.jpg"
+          src="/src/assets/Nick_circle_2.jpg"
           alt="profile-pic"
         />
       </div>
