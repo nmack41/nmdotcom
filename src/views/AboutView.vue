@@ -97,7 +97,8 @@ export default {
         {
           exptitle:
             "Sr. Analyst, Data Engineering – Logistics Management Institute (LMI)",
-          expdesc: "Just began in August 2022.",
+          expdesc:
+            "I oversee and ensure the efficient management of ETL feeds, leveraging tools such as Informatica PowerCenter. My responsibilities also involve conducting investigations and rectifying any ETL failures. I utilize Teradata and Oracle SQL and for a variety of tasks, including the updating, removal, and retrieval of information from databases. In addition, I perform file alterations using the Linux command line. Furthermore, I work with customers to ensure their data management needs are satisfied.",
         },
         {
           exptitle:
