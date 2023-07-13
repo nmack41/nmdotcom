@@ -5,7 +5,7 @@
       <div class="about-me-profile">
         <img
           id="profile1"
-          src="/src/assets/Nick_circle_2.jpg"
+          src="/src/assets/Nick_circle_2.png"
           alt="profile-pic"
         />
       </div>
@@ -167,7 +167,8 @@ export default {
   align-items: right;
   text-align: center;
   flex-direction: column;
-  width: 50%;
+  width: 60%;
+  padding-left: 2em;
 }
 
 .techskills {

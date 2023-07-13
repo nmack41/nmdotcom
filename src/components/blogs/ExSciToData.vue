@@ -122,7 +122,6 @@
 <style>
 .article {
   font-family: Arial, sans-serif;
-  color: #333;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -131,7 +130,6 @@
 .article h1 {
   text-align: center;
   font-size: 2em;
-  color: #333;
 }
 
 .article h2 {
