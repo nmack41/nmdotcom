@@ -139,6 +139,28 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width: 600px) {
+  .about-me-wrapper {
+    flex-direction: column;
+  }
+
+  .about-me-skillcerts {
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .techskills {
+    grid-template-columns: 1fr;
+  }
+
+  #profile1 {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+}
+
 .about-me {
   padding: 2em;
   display: flex;
