@@ -145,8 +145,12 @@ export default {
     align-items: center;
   }
 
+  .about-me-profile,
   .about-me-skillcerts {
     width: 100%;
+  }
+
+  .about-me-skillcerts {
     padding-left: 0;
   }
 }
