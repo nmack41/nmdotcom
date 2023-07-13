@@ -8,6 +8,12 @@
   font-weight: normal;
 }
 
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+}
+
 a,
 .a {
   text-decoration: none;
