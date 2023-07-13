@@ -1,6 +1,6 @@
 <template>
   <div class="about-me">
-    <h1>About Me</h1>
+    <h1>Nick Mackowski</h1>
     <div class="about-me-wrapper">
       <div class="about-me-profile">
         <img
