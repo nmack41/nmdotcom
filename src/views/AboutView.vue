@@ -139,7 +139,7 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (max-width: 900px) {
+/* @media only screen and (max-width: 900px) {
   .about-me-wrapper {
     flex-direction: column;
   }
@@ -159,7 +159,7 @@ export default {
     max-width: 300px;
     height: auto;
   }
-}
+} */
 
 .about-me {
   padding: 2em;
