@@ -1,7 +1,14 @@
 <template>
   <div class="about-me">
     <h1>Nick Mackowski</h1>
-    <div class="about-me-profile dekstop">
+    <div class="profile-mobile">
+      <img
+        id="profile0"
+        src="/src/assets/Nick_circle_2.png"
+        alt="profile-pic"
+      />
+    </div>
+    <div class="about-me-profile-desktop">
       <div class="about-me-profile">
         <img
           id="profile1"
@@ -26,14 +33,7 @@
         </div>
       </div>
     </div>
-    <div class="about-me-profile mobile">
-      <div class="about-me-profile">
-        <img
-          id="profile1"
-          src="/src/assets/Nick_circle_2.png"
-          alt="profile-pic"
-        />
-      </div>
+    <div class="about-me-profile-mobile">
       <div class="about-me-skillcerts">
         <div class="skills">
           <h2>Technical Skills</h2>
@@ -54,15 +54,20 @@
     <div class="publications">
       <h2>Publications</h2>
       <div v-for="(publish, index) in pub" :key="index">
-        <p>{{ publish }}</p>
+        <p>
+          <a :href="publink[index]" target="_blank">{{ publish }}</a>
+        </p>
       </div>
     </div>
     <div class="abstracts">
       <h2>Abstracts</h2>
       <div v-for="(abs, index) in abstract" :key="index">
-        <p>{{ abs }}</p>
+        <p>
+          <a :href="abstractlink[index]">{{ abs }}</a>
+        </p>
       </div>
     </div>
+
     <div class="experiences">
       <h2>Experiences</h2>
       <div v-for="(experience, index) in exp" :key="index">
@@ -105,8 +110,18 @@ export default {
         "Hierholzer, K., Briggs, R., Tolston, M., Mackowski, N., O’Connor, M., Barrett, K., Smith, R., Eckerle, J. and Strang, A., 2022. Heart Rate Variability Metrics from Commercial Devices Predicts Strength and Cardiovascular Performance in a Military Cohort. American Journal of Sports Science, 10(1), pp.14-23.",
         "Strang, A.J., Smith, R., Hierholzer, K., Moore, B., Crews, R. and Mackowski, N., 2021. Effects of an AMINO-ACID Gel (AQUAGARD (registered trademark)) on Hydration and Performance Parameters During Prolonged Aerobic Exercise. Oak Ridge Institute for Science and Education.",
         "Devine, K.A., Viola, A., Levonyan‐Radloff, K., Mackowski, N., Bozzini, B., Chandler, A., Xu, B., Ohman‐Strickland, P., Mayans, S., Farrar‐Anton, A. and Sahler, O.J.Z., 2020. Feasibility of FitSurvivor: A technology‐enhanced group‐based fitness intervention for adolescent and young adult survivors of childhood cancer. Pediatric Blood & Cancer, 67(9), p.e28530.",
-        " Harshman, S.W., Strayer, K.E., Davidson, C.N., Pitsch, R.L., Narayanan, L., Scott, A.M., Schaeublin, N.M., Wiens, T.L., Phelps, M.S., O’Connor, M.L. and Mackowski, N.S., 2021. Rate normalization for sweat metabolomics biomarker discovery. Talanta, 223, p.121797.",
+        "Harshman, S.W., Strayer, K.E., Davidson, C.N., Pitsch, R.L., Narayanan, L., Scott, A.M., Schaeublin, N.M., Wiens, T.L., Phelps, M.S., O’Connor, M.L. and Mackowski, N.S., 2021. Rate normalization for sweat metabolomics biomarker discovery. Talanta, 223, p.121797.",
         "Harshman, S.W., Browder, A.B., Davidson, C.N., Pitsch, R.L., Strayer, K.E., Schaeublin, N.M., Phelps, M.S., O’Connor, M.L., Mackowski, N.S., Barrett, K.N. and Eckerle, J.J., 2021. The impact of nutritional supplementation on sweat metabolomic content: a proof-of-concept study. Frontiers in Chemistry, 9, p.255.",
+      ],
+      publink: [
+        "https://www.journalofexerciseandnutrition.com/index.php/JEN/article/view/133",
+        "https://www.sciencepublishinggroup.com/journal/paperinfo?journalid=387&doi=10.11648/j.aap.20220702.12",
+        "https://physoc.onlinelibrary.wiley.com/doi/10.1113/JP283297",
+        "https://www.sciencepublishinggroup.com/journal/paperinfo?journalid=155&doi=10.11648/j.ajss.20221001.13",
+        "https://apps.dtic.mil/sti/citations/AD1146017",
+        "https://onlinelibrary.wiley.com/doi/10.1002/pbc.28530",
+        "https://www.sciencedirect.com/science/article/pii/S0039914020310882?via%3Dihub",
+        "https://www.frontiersin.org/articles/10.3389/fchem.2021.659583/full",
       ],
       abstract: [
         "Tok, O., Pellegrino, J., Walker, A., Sanders, D., McFadden, B., Rabideau, M., Conway, S., Ordway, C., Bello, M., Hofacker, M., Mackowski, N., Poyssick, A., Capone, E., Monaco, R., Fragala, M., & Arent, S. (2016). In-season changes in plasma amino acid levels in division I NCAA female athletes. Journal of the International Society of Sports Nutrition, 13, P25.",
@@ -114,6 +129,13 @@ export default {
         "Hofacker, M., Walker, A., McFadden, B., Rabideau, M., Conway, S., Sanders, D., Mackowski, N., & Arent, S. (2016) Practice vs. competition work rates in collegiate soccer players: do they practice like they play?. Medicine & Science in Sport Exercise, 48, P.S793.",
         "McFadden, B., Walker, A., Hofacker, M., Rabideau, M., Poyssick, A., Conway, S., Pellegrino, J., Mackowski, N., Ordway, C., & Arent, S. (2016). Monitoring the effect of a yearlong training program on power, ventilatory threshold, body composition, and aerobic capacity of division I male college soccer players. Medicine & Science in Sport Exercise, 48, P.S792",
         "Pellegrino, J., Walker, A., Conway, S., Hofacker, M., Rabideau, M., McFadden, B., Mackowski, N., Ordway, C., Bello, M., Tok, O., Sanders, D., & Arent, S. (2016). Biomarker changes in collegiate female power-endurance athletes: the role of fitness as a predictor. Medicine & Science in Sport Exercise, Vol. 48 No. 5, 2016. P.S265",
+      ],
+      abstractlink: [
+        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5025820/",
+        "https://journals.lww.com/acsm-msse/Fulltext/2016/05001/Changes_In_Markers_Of_Recovery,_Readiness,_And.790.aspx",
+        "https://journals.lww.com/acsm-msse/Fulltext/2016/05001/Practice_vs_Competition_Work_Rates_in_Collegiate.2373.aspx",
+        "https://journals.lww.com/acsm-msse/Fulltext/2016/05001/Monitoring_Of_A_Yearlong_Training_Program_On.2372.aspx",
+        "https://journals.lww.com/acsm-msse/Fulltext/2016/05001/Biomarkers_Changes_In_Collegiate_Female.792.aspx",
       ],
       thesis: [
         "Fit survivor: a multi-component health intervention for adolescent and young adult childhood cancer survivors",
@@ -164,59 +186,95 @@ export default {
 </script>
 
 <style scoped>
-.about-me {
-  padding: 2%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  text-align: left;
+.about-me-profile-desktop,
+.about-me-profile-mobile {
+  display: none;
 }
 
 @media only screen and (max-width: 900px) {
-  .about-me-profile.mobile {
-    display: flex; /* Show mobile profile div on mobile */
+  .about-me {
+    padding: 2%;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+  }
+  .about-me-profile-mobile {
+    display: flex;
   }
 
-  .about-me-profile.desktop {
-    display: none; /* Hide desktop profile div on mobile */
+  .profile-mobile {
+    display: flex;
+  }
+
+  #profile0 {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
   }
 
   h1 {
     text-align: center;
   }
+
+  .about-me-profile,
+  .about-me-skillcerts {
+    width: 100%;
+    display: flex;
+    text-align: left;
+    padding: 2%;
+  }
+
+  .about-me-skillcerts {
+    flex-direction: column;
+  }
 }
 
 @media only screen and (min-width: 901px) {
-  .about-me-profile.desktop {
-    display: flex; /* Show desktop profile div on desktop */
+  .about-me {
+    padding: 2%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+  }
+  .about-me-profile-desktop {
+    display: flex;
   }
 
-  .about-me-profile.mobile {
-    display: none; /* Hide mobile profile div on desktop */
+  .profile-mobile {
+    display: none;
   }
-}
 
-.about-me-profile-image,
-.about-me-skillcerts {
-  width: 100%;
-  max-width: 400px;
-  padding: 2%;
-}
+  #profile1 {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
 
-.about-me-profile,
-.about-me-skillcerts {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  padding: 2%;
-}
+  .about-me-profile,
+  .about-me-skillcerts {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 2%;
+  }
+  .about-me-skillcerts {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 2%;
+    gap: 10%;
+  }
 
-#profile1 {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
+  .about-me-skillcerts h2 {
+    text-align: center;
+  }
+
+  .techskills {
+    width: 100%;
+  }
 }
 
 .techskills {
@@ -264,6 +322,10 @@ ul {
 
 p {
   margin-top: 0.5em;
+}
+
+div a:hover {
+  font-weight: bold;
 }
 
 .exptitle {
