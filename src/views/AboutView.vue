@@ -139,7 +139,7 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
   .about-me-wrapper {
     flex-direction: column;
     align-items: center;
@@ -148,10 +148,16 @@ export default {
   .about-me-profile,
   .about-me-skillcerts {
     width: 100%;
+    margin: 0;
   }
 
   .about-me-skillcerts {
+    order: 1; /* Forces the techskills to go below the image */
     padding-left: 0;
+  }
+
+  .about-me-profile {
+    order: 0; /* Keeps the image on top */
   }
 }
 
