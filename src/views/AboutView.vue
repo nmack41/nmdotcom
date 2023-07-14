@@ -162,7 +162,8 @@ export default {
 }
 
 .about-me {
-  padding: 2em;
+  padding: 5em;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -173,6 +174,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 80%;
 }
 
 #profile1 {
@@ -184,14 +186,16 @@ export default {
   display: flex;
   align-items: center;
   text-align: center;
+  padding: 5em;
 }
 
 .about-me-skillcerts {
-  align-items: right;
+  align-items: center;
   text-align: center;
-  flex-direction: column;
-  width: 60%;
+  flex-direction: row;
+  width: 50%;
   padding-left: 2em;
+  padding-top: 5%;
 }
 
 .techskills {
