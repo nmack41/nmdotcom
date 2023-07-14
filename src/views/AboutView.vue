@@ -331,4 +331,10 @@ div a:hover {
 .exptitle {
   font-weight: bold;
 }
+
+@media (prefers-color-scheme: dark) {
+  div a {
+    color: #eee;
+  }
+}
 </style>
