@@ -1,7 +1,32 @@
 <template>
   <div class="about-me">
     <h1>Nick Mackowski</h1>
-    <div class="about-me-wrapper">
+    <div class="about-me-profile dekstop">
+      <div class="about-me-profile">
+        <img
+          id="profile1"
+          src="/src/assets/Nick_circle_2.png"
+          alt="profile-pic"
+        />
+      </div>
+      <div class="about-me-skillcerts">
+        <div class="skills">
+          <h2>Technical Skills</h2>
+          <div class="techskills">
+            <div v-for="(skill, index) in skills" :key="index">
+              <p>{{ skill }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="certifications">
+          <h2>Certifications</h2>
+          <div v-for="(cert, index) in certs" :key="index">
+            <p>{{ cert }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-me-profile mobile">
       <div class="about-me-profile">
         <img
           id="profile1"
@@ -139,30 +164,8 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (max-width: 900px) {
-  .about-me-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .about-me-profile,
-  .about-me-skillcerts {
-    width: 100%;
-    margin: 0;
-  }
-
-  .about-me-skillcerts {
-    order: 1; /* Forces the techskills to go below the image */
-    padding-left: 0;
-  }
-
-  .about-me-profile {
-    order: 0; /* Keeps the image on top */
-  }
-}
-
 .about-me {
-  padding: 5em;
+  padding: 2%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -170,32 +173,50 @@ export default {
   text-align: left;
 }
 
-.about-me-wrapper {
+@media only screen and (max-width: 900px) {
+  .about-me-profile.mobile {
+    display: flex; /* Show mobile profile div on mobile */
+  }
+
+  .about-me-profile.desktop {
+    display: none; /* Hide desktop profile div on mobile */
+  }
+
+  h1 {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  .about-me-profile.desktop {
+    display: flex; /* Show desktop profile div on desktop */
+  }
+
+  .about-me-profile.mobile {
+    display: none; /* Hide mobile profile div on desktop */
+  }
+}
+
+.about-me-profile-image,
+.about-me-skillcerts {
+  width: 100%;
+  max-width: 400px;
+  padding: 2%;
+}
+
+.about-me-profile,
+.about-me-skillcerts {
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 80%;
+  align-items: center;
+  text-align: center;
+  padding: 2%;
 }
 
 #profile1 {
-  width: 400px;
-  height: 400px;
-}
-
-.about-me-profile {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  padding: 5em;
-}
-
-.about-me-skillcerts {
-  align-items: center;
-  text-align: center;
-  flex-direction: row;
-  width: 50%;
-  padding-left: 2em;
-  padding-top: 5%;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
 }
 
 .techskills {
@@ -230,6 +251,11 @@ h2,
 h3 {
   font-weight: bold;
   width: 100%;
+}
+
+h2,
+h3 {
+  text-align: left;
 }
 
 ul {
