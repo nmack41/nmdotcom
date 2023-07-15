@@ -27,4 +27,10 @@ export default {
   margin-top: 2em;
   width: 100%;
 }
+
+@media (prefers-color-scheme: dark) {
+  div a {
+    color: #eee;
+  }
+}
 </style>
