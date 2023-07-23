@@ -1,21 +1,63 @@
-# nmdotcom
+# Nuxt 3 Minimal Starter
 
-Personal website developed in Vue.
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Project Setup
+## Setup
 
-```sh
+Make sure to install the dependencies:
+
+```bash
+# npm
 npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
 ```
 
-### Compile and Hot-Reload for Development
+## Development Server
 
-```sh
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
 npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
 ```
 
-### Compile and Minify for Production
+## Production
 
-```sh
+Build the application for production:
+
+```bash
+# npm
 npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
 ```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

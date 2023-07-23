@@ -1,84 +1,72 @@
 <template>
-  <div class="about-me">
-    <h1>Nick Mackowski</h1>
-    <div class="profile-mobile">
-      <img
-        id="profile0"
-        src="/src/assets/Nick_circle_2.png"
-        alt="profile-pic"
-      />
-    </div>
-    <div class="about-me-profile-desktop">
-      <div class="about-me-profile">
+  <div class="p-10">
+    <h1 class="font-bold text-3xl mb-4">Nick Mackowski</h1>
+    <div class="flex flex-col items-start text-left md:flex-row p-2 mb-8">
+      <div class="md:w-1/3">
         <img
-          id="profile1"
-          src="/src/assets/Nick_circle_2.png"
+          class="w-full max-w-md h-auto"
+          src="assets/Nick_circle_2.png"
           alt="profile-pic"
         />
       </div>
-      <div class="about-me-skillcerts">
-        <div class="skills">
-          <h2>Technical Skills</h2>
-          <div class="techskills">
-            <div v-for="(skill, index) in skills" :key="index">
+      <div class="mt-4 md:mt-0 md:w-2/3 md:px-8 p-10">
+        <div class="mb-8">
+          <h2 class="font-bold text-xl">Technical Skills</h2>
+          <div class="grid grid-cols-3 gap-2 mt-2">
+            <div
+              v-for="(skill, index) in skills"
+              :key="index"
+              :class="{ 'col-span-3': index === skills.length - 1 }"
+            >
               <p>{{ skill }}</p>
+              <div class="w-full bg-gray-200 mt-2"></div>
             </div>
           </div>
         </div>
-        <div class="certifications">
-          <h2>Certifications</h2>
-          <div v-for="(cert, index) in certs" :key="index">
-            <p>{{ cert }}</p>
+        <div class="mb-8">
+          <h2 class="font-bold text-xl">Certifications</h2>
+          <div class="mt-2">
+            <p v-for="(cert, index) in certs" :key="index">{{ cert }}</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="about-me-profile-mobile">
-      <div class="about-me-skillcerts">
-        <div class="skills">
-          <h2>Technical Skills</h2>
-          <div class="techskills">
-            <div v-for="(skill, index) in skills" :key="index">
-              <p>{{ skill }}</p>
-            </div>
-          </div>
-        </div>
-        <div class="certifications">
-          <h2>Certifications</h2>
-          <div v-for="(cert, index) in certs" :key="index">
-            <p>{{ cert }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="publications">
-      <h2>Publications</h2>
-      <div v-for="(publish, index) in pub" :key="index">
-        <p>
-          <a :href="publink[index]" target="_blank">{{ publish }}</a>
-        </p>
-      </div>
-    </div>
-    <div class="abstracts">
-      <h2>Abstracts</h2>
-      <div v-for="(abs, index) in abstract" :key="index">
-        <p>
-          <a :href="abstractlink[index]">{{ abs }}</a>
-        </p>
-      </div>
-    </div>
-
-    <div class="experiences">
-      <h2>Experiences</h2>
+    <div class="mb-8">
+      <h2 class="font-bold text-xl">Experiences</h2>
       <div v-for="(experience, index) in exp" :key="index">
-        <p class="exptitle">{{ experience.exptitle }}</p>
-        <p>{{ experience.expdesc }}</p>
+        <p class="font-bold mt-2">{{ experience.exptitle }}</p>
+        <p class="mt-1">{{ experience.expdesc }}</p>
       </div>
     </div>
-    <div class="education">
-      <h2>Education</h2>
+    <div class="mb-8">
+      <h2 class="font-bold text-xl">Publications</h2>
+      <div v-for="(publish, index) in pub" :key="index">
+        <p class="mt-2">
+          <a
+            class="text-black-500 hover:text-green-700"
+            :href="publink[index]"
+            target="_blank"
+            >{{ publish }}</a
+          >
+        </p>
+      </div>
+    </div>
+    <div class="mb-8">
+      <h2 class="font-bold text-xl">Abstracts</h2>
+      <div v-for="(abs, index) in abstract" :key="index">
+        <p class="mt-2">
+          <a
+            class="text-black-500 hover:text-green-700"
+            :href="abstractlink[index]"
+            >{{ abs }}</a
+          >
+        </p>
+      </div>
+    </div>
+    <div class="mb-8">
+      <h2 class="font-bold text-xl">Education</h2>
       <div v-for="(edu, index) in school" :key="index">
-        <p>{{ edu }}</p>
+        <p class="mt-2">{{ edu }}</p>
       </div>
     </div>
   </div>
@@ -184,157 +172,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.about-me-profile-desktop,
-.about-me-profile-mobile {
-  display: none;
-}
-
-@media only screen and (max-width: 900px) {
-  .about-me {
-    padding: 2%;
-    flex-direction: column;
-    align-items: left;
-    text-align: left;
-  }
-  .about-me-profile-mobile {
-    display: flex;
-  }
-
-  .profile-mobile {
-    display: flex;
-  }
-
-  #profile0 {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-  }
-
-  h1 {
-    text-align: center;
-  }
-
-  .about-me-profile,
-  .about-me-skillcerts {
-    width: 100%;
-    display: flex;
-    text-align: left;
-    padding: 2%;
-  }
-
-  .about-me-skillcerts {
-    flex-direction: column;
-  }
-}
-
-@media only screen and (min-width: 901px) {
-  .about-me {
-    padding: 2%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    text-align: left;
-  }
-  .about-me-profile-desktop {
-    display: flex;
-  }
-
-  .profile-mobile {
-    display: none;
-  }
-
-  #profile1 {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-  }
-
-  .about-me-profile,
-  .about-me-skillcerts {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    padding: 2%;
-  }
-  .about-me-skillcerts {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    padding: 2%;
-    gap: 10%;
-  }
-
-  .about-me-skillcerts h2 {
-    text-align: center;
-  }
-
-  .techskills {
-    width: 100%;
-  }
-}
-
-.techskills {
-  margin-left: 1em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: auto;
-  gap: 10px;
-}
-
-.techskills > div:last-child {
-  grid-column: 1 / -1;
-  text-align: left;
-}
-
-.certifications div p {
-  text-align: left;
-}
-
-.skills,
-.certifications,
-.publications,
-.abstracts,
-.experiences,
-.thesis,
-.education {
-  margin-bottom: 2em;
-}
-
-h1,
-h2,
-h3 {
-  font-weight: bold;
-  width: 100%;
-}
-
-h2,
-h3 {
-  text-align: left;
-}
-
-ul {
-  margin-top: 1em;
-}
-
-p {
-  margin-top: 0.5em;
-}
-
-div a:hover {
-  font-weight: bold;
-}
-
-.exptitle {
-  font-weight: bold;
-}
-
-@media (prefers-color-scheme: dark) {
-  div a {
-    color: #eee;
-  }
-}
-</style>
