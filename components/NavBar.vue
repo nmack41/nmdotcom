@@ -23,11 +23,11 @@ GitHub: https://github.com/logos
           to="/blog"
           >Blog</NuxtLink
         >
-        <NuxtLink
+        <!-- <NuxtLink
           class="text-white text-sm ml-6 transition-all duration-300 hover:font-bold"
           to="/"
           >About Nick</NuxtLink
-        >
+        > -->
       </div>
     </nav>
   </header>
