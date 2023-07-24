@@ -26,4 +26,3 @@ logs
 components/SignUpForm.vue
 pages/contactme.vue
 pages/thankyou.vue
-pages/newsletter.vue

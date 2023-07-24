@@ -13,11 +13,11 @@ GitHub: https://github.com/logos
         <Social />
       </div>
       <div class="ml-auto flex">
-        <!-- <NuxtLink
+        <NuxtLink
           class="text-white text-sm ml-6 transition-all duration-300 hover:font-bold"
           to="/newsletter"
           >Newsletter</NuxtLink
-        > -->
+        >
         <NuxtLink
           class="text-white text-sm ml-6 transition-all duration-300 hover:font-bold"
           to="/blog"
