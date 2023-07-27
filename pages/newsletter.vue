@@ -1,26 +1,8 @@
-<!-- MailerLite Universal -->
-<script>
-(function (w, d, e, u, f, l, n) {
-  (w[f] =
-    w[f] ||
-    function () {
-      (w[f].q = w[f].q || []).push(arguments);
-    }),
-    (l = d.createElement(e)),
-    (l.async = 1),
-    (l.src = u),
-    (n = d.getElementsByTagName(e)[0]),
-    n.parentNode.insertBefore(l, n);
-})(
-  window,
-  document,
-  "script",
-  "https://assets.mailerlite.com/js/universal.js",
-  "ml"
-);
-ml("account", "164582");
-</script>
-<!-- End MailerLite Universal -->
 <template>
-  <div class="ml-embedded" data-form="nCLwlb"></div>
+  <div class="p-4">
+    I will send a monthly (maybe bi-monthly) newsletter regarding health,
+    fitness, and performance. This will include questions I've been asked about,
+    new research, and thoughts on current trends. Sign-up below!
+    <SignUpForm />
+  </div>
 </template>

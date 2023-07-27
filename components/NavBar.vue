@@ -7,7 +7,7 @@ GitHub: https://github.com/logos
 -->
 <template>
   <header class="bg-gray-700 fixed w-full top-0 left-0 z-30">
-    <nav class="flex p-4 items-center">
+    <nav class="flex justify-between p-4 items-center">
       <NuxtLink class="text-white text-xl mr-4" to="/">Nick Mackowski</NuxtLink>
       <div class="socialclass ml-2">
         <Social />
