@@ -22,6 +22,9 @@ logs
 .env.*
 !.env.example
 swa-db-connections
+dab-config.json
+schema.gql
+swa-cli.config.json
 
 # In development
 pages/contactme.vue
