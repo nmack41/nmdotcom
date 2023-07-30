@@ -21,8 +21,8 @@ logs
 .env
 .env.*
 !.env.example
+swa-db-connections
 
 # In development
-components/SignUpForm.vue
 pages/contactme.vue
 pages/thankyou.vue

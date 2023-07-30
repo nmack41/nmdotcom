@@ -131,35 +131,36 @@ export default {
       exp: [
         {
           exptitle:
-            "Sr. Analyst, Data Engineering – Logistics Management Institute (LMI)",
+            "Sr. Analyst, Data Engineering – Logistics Management Institute (LMI) - 08/2022 - Current",
           expdesc:
-            "I oversee and ensure the efficient management of ETL feeds, leveraging tools such as Informatica PowerCenter. My responsibilities also involve conducting investigations and rectifying any ETL failures. I utilize Teradata and Oracle SQL and for a variety of tasks, including the updating, removal, and retrieval of information from databases. In addition, I perform file alterations using the Linux command line. Furthermore, I work with customers to ensure their data management needs are satisfied.",
+            "My primary duties entail managing and maintaining ETL feeds, primarily through Informatica PowerCenter, Teradata SQL, and Oracle SQL. I have also utilized file manipulation using the Linux command line. Complementing my technical skills, my strong commitment to customer service ensures I understand and exceed client data management needs, fostering lasting, trust-based relationships.",
         },
         {
           exptitle:
-            "Associate Researcher and Sports Scientist – InfoSciTex, Inc. (IST)",
+            "Associate Researcher and Sports Scientist – InfoSciTex, Inc. (IST) - 02/2019- 08/2022",
           expdesc:
             "My primary role consisted of research in enhancing the physical and cognitive domains of Airmen and translating any findings to greater empower the impact of unit-embedded human performance staff. I collaborated with the team at the Air Force Research Labs in research design, logistical planning, facility use, data collection, and data analysis. Additionally, I served as an account manager for several units that utilized Smartabase where I developed intake forms, provided analytical support, and created data visualizations.",
         },
         {
-          exptitle: "Associate Researcher and Sport Scientist – ORISE",
+          exptitle:
+            "Associate Researcher and Sport Scientist – ORISE - 02/2018 - 06/2019",
           expdesc:
             "My role as a DoD Fellow entailed hands-on coaching, development and implementation of performance training for Airmen, and test administration to identify physical performance status and deficits.",
         },
         {
           exptitle:
-            "Rutgers Center For Health and Human Performance – Graduate Researcher and Strength & Conditioning Coach",
+            "Rutgers Center For Health and Human Performance – Graduate Researcher and Strength & Conditioning Coach - 2015 - 2018",
           expdesc:
             "The research was led through a NIH-funded grant titled “A Novel Mobile Health Fitness Program for AYA Survivors of Childhood Cancer.” Additionally, I had the opportunity to work with adolescents and Division I athletes both as a Graduate Researcher and a S&C Coach. This allowed me to experience the bridge between research and application and the intricacies of each.",
         },
         {
           exptitle:
-            "Rutgers Recreation – Assistant Personal Training Coordinator and Strength & Conditioning Coach",
+            "Rutgers Recreation – Assistant Personal Training Coordinator and Strength & Conditioning Coach - 2012 - 2018",
           expdesc:
             "My primary role consisted of coaching individuals, club teams, and ROTC cadets.",
         },
         {
-          exptitle: "Rutgers Football – Student Athletic Trainer",
+          exptitle: "Rutgers Football – Student Athletic Trainer - 2009 - 2011",
           expdesc:
             "I aided the head and assistant athletic trainers during the in-season, off-season, and training camps with regards to injury prevention, alleviation of illness, and rehabilitation of 70+ football athletes.",
         },
