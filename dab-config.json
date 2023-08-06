@@ -25,5 +25,17 @@
       }
     }
   },
-  "entities": {}
+  "entities": {
+    "Book": {
+      "source": "dbo.Books",
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            "*"
+          ]
+        }
+      ]
+    }
+  }
 }
