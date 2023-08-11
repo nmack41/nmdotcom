@@ -29,3 +29,4 @@ swa-cli.config.json
 # In development
 pages/contactme.vue
 pages/thankyou.vue
+configure
