@@ -16,7 +16,7 @@ export default function Resume() {
     const data: Data = resume_data();
     return (
         <main>
-          <div className="p-10">
+          <div className="p-10 ">
             <h1>Nick Mackowski</h1>
             <div className="flex flex-col items-start text-left md:flex-row p-2 mb-8">
                 <div className="md:w-1/3">
