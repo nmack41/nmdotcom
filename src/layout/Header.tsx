@@ -1,4 +1,5 @@
 import Link from 'next/link';
+// import SocialLinks from '@layout/Social';
 
 export default function Header() {
   return (
@@ -8,16 +9,13 @@ export default function Header() {
         <div className="socialclass ml-2">
           {/* Include your Social component here */}
           {/* <Social /> */}
+          {/* <SocialLinks /> */}
         </div>
         <div className="flex">
           <Link href="/newsletter" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">Newsletter</Link>
           <Link href="/blog" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">Blog</Link>
           {/* Uncomment below if you want an "About Nick" link */}
-          {/* <Link href="/">
-            <a className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">
-              About Nick
-            </a>
-          </Link> */}
+          <Link href="/" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">About Nick</Link>
         </div>
       </nav>
     </header>
