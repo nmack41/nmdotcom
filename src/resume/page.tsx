@@ -16,19 +16,20 @@ export default function Resume() {
   const data: Data = resume_data();
   return (
     <main>
-      <div className="p-10">
-        <h1 className="mb-4 text-3xl">Nick Mackowski</h1>
-        <div className="flex flex-col items-start text-left md:flex-row p-2 mb-8">
-          <div className="md:w-1/3">
-            <Image
-              src="/images/Nick_resume_pic.png"
-              alt="profile-pic"
-              width={500}
-              height={500}
-            />
+        <div className="flex flex-col items-start text-left md:flex-row md:mt-6 p-8">
+          <div className="md:w-1/3 relative">
+            <div className="flex flex-col items-center mb-8">
+              <h1 className="mb-8 text-3xl">Nick Mackowski</h1>
+                <Image
+                    src="/images/Nick_resume_pic.png"
+                    alt="profile-pic"
+                    width={500}
+                    height={500}
+                />
+            </div>
           </div>
-          <div className="mt-4 md:mt-0 md:w-2/3 md:px-8 p-10">
-              <h2 className="mt-8 mb-4 text-2xl">Technical Skills</h2>
+          <div className="md:w-2/3">
+              <h2 className="mb-4 text-2xl">Technical Skills</h2>
               <div className="grid grid-cols-3 gap-2">
                 {data.skills.map((skill: string, index: number) => (
                   <div key={index} className={index === data.skills.length - 1 ? 'col-span-3' : ''}>
@@ -92,7 +93,6 @@ export default function Resume() {
             </div>
           </div>
         </div>
-      </div>
     </main>
   );
 };

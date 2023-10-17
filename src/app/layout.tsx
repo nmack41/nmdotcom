@@ -19,10 +19,13 @@ export default function RootLayout({
   return (
     <div>
       <Header />
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
+      <div className="pt-16">  {/* Added padding-top */}
+        <html lang="en">
+          <body className={inter.className}>{children}</body>
+        </html>
+      </div>
       <Footer />
     </div>
   );
 }
+
