@@ -1,0 +1,8 @@
+.social-buttons {
+    display: flex;
+}
+
+.linkedin-button,
+.github-button {
+    color: white;
+}

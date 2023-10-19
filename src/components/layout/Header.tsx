@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Social from './Social';
+import * as React from 'react';
 
-  
 
 export default function Header() {
   return (
@@ -12,16 +12,14 @@ export default function Header() {
           <Social />
         </div>
         <div className="flex">
-          {/* <Link href="/newsletter" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">Newsletter</Link> */}
-          {/* <Link href="/blog" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">Blog</Link> */}
-          {/* <Link href="/" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">About Nick</Link> */}
+          <Link href="/app/pages/newsletter" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">Newsletter</Link>
+          <Link href="/blog" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">Blog</Link>
+          <Link href="/" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">About Nick</Link>
         </div>
       </nav>
     </header>
   );
 }
-
-
 
 
 

@@ -1,8 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Header from '@/layout/Header';
-import Footer from '@/layout/Footer';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,11 +19,8 @@ export default function RootLayout({
   return (
     <div>
       <Header />
-      <div className="pt-16">  {/* Added padding-top */}
-        <html lang="en">
-          <body className={inter.className}>{children}</body>
-        </html>
-      </div>
+      <div className='mb-16'></div>
+      {children}
       <Footer />
     </div>
   );
