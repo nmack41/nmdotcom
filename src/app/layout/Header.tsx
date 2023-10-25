@@ -12,7 +12,7 @@ export default function Header() {
           <Social />
         </div>
         <div className="flex">
-          <Link href="/newsletter" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">Newsletter</Link>
+          {/* <Link href="/newsletter" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">Newsletter</Link> */}
           {/* <Link href="/blog" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">Blog</Link> */}
           <Link href="/" className="text-white text-sm ml-6 transition-all duration-300 hover:font-bold">About Nick</Link>
         </div>

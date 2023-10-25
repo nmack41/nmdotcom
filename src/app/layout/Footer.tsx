@@ -1,3 +1,5 @@
+// import styles from './Layout.module.css'
+
 export default function Footer() {
     return (
       <footer className="bg-secondary-100 text-center dark:bg-secondary-600">

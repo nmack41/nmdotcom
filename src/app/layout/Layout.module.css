@@ -2,7 +2,15 @@
     display: ;
 } */
 
+/* Social */
 .linkedin-button,
 .github-button {
     color: white;
 }
+
+
+/* Footer */
+.sticky-footer {
+    position: sticky;
+    bottom: 0;
+  }

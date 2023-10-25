@@ -18,14 +18,16 @@ export default function Resume() {
     <main>
         <div className="flex flex-col items-start text-left md:flex-row md:mt-6 p-8">
           <div className="md:w-1/3 relative">
-            <div className="flex flex-col items-center mb-8">
+            <div className="flex flex-col items-center">
               <h1 className="mb-8 text-3xl">Nick Mackowski</h1>
-                <Image
-                    src="/images/Nick_resume_pic.png"
-                    alt="profile-pic"
-                    width={500}
-                    height={500}
-                />
+                <div className="p-4">
+                  <Image
+                      src="/images/Nick_resume_pic.png"
+                      alt="profile-pic"
+                      width={500}
+                      height={500}
+                  />
+                </div>
             </div>
           </div>
           <div className="md:w-2/3">

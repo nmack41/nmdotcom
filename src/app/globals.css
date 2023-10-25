@@ -44,4 +44,10 @@ h2 {
   font-weight: bold;
 }
 
+.grid-rows-layout {
+  grid-template-rows: auto 1fr auto;
+}
 
+.min-h-screen {
+  min-height: 100vh;
+}

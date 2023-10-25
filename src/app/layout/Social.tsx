@@ -1,6 +1,6 @@
 import React from 'react';
 import { SiLinkedin, SiGithub } from 'react-icons/si';
-import styles from './Social.module.css';
+import styles from './Layout.module.css';
 import Link from 'next/link';
 
 // export default function Social() {

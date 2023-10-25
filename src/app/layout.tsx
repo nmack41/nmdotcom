@@ -1,8 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Header from '@/app/layout/Header';
+import Footer from '@/app/layout/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,11 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-      <html>
-        <body>
+      <html >
+        <body suppressHydrationWarning={true}>
           <Header />
           <div className='mb-16'></div>
+          <div className="grid min-h-screen grid-rows-layout">
           {children}
+          </div>
           <Footer />
         </body>
       </html>

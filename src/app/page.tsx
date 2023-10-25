@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Resume from '@/resume/page';
+import Resume from '@/app/resume/page';
 import './globals.css'
 
 
