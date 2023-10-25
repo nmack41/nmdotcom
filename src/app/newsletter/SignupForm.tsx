@@ -4,17 +4,8 @@ import styles from './Signup.module.css';
 
 export default function NewsletterForm() {
   const [emailAddress, setEmailAddress] = useState('');
-
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   console.log(setEmailAddress)
-  //   event.preventDefault();
-  //   // alert('Email address: ${setEmailAddress')
-  // }
-
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    // submitToApi(formData)
-    console.log("submitted")
 
     try {
       const response = await fetch('http://localhost:5000/api/email', {
