@@ -58,5 +58,5 @@ jobs:
         with:
           app-name: 'nmdotcom'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7D6B0399F03E400FB1B3C9804BDD697D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D7E7D72FBE744F9FB425E0E943288B5C }}
           package: .
