@@ -10,12 +10,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^13.5.4",
+    "next": "^14.0.4",
     "next-share": "^0.27.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
-    "sharp": "^0.32.6"    
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
     "@types/node": "^20",
