@@ -1,0 +1,4 @@
+type email @model {
+  id: ID
+  emailaddress: String
+}
