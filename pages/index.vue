@@ -87,6 +87,7 @@ export default {
       ],
       certs: [
         "CompTIA Security+",
+        "Microsoft Certified: Azure Administrator Associate",
         "Certified Strength and Conditioning Speciapst (CSCS) – National Strength & Conditioning Association (NSCA)",
         "First Aid – American Red Cross",
         "CPR & AED – American Red Cross",
