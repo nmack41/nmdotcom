@@ -1,5 +1,5 @@
 <template>
-  <div class="social flex space-x-4">
+  <!-- <div class="social flex space-x-4">
     <div class="twitter">
       <a
         href="https://twitter.com/NickMack41"
@@ -17,7 +17,7 @@
           ></path>
         </svg>
       </a>
-    </div>
+    </div> -->
 
     <div class="linkedin">
       <a
@@ -38,7 +38,7 @@
       </a>
     </div>
 
-    <div class="github">
+    <!-- <div class="github">
       <a
         href="https://github.com/nmack41"
         target="_blank"
@@ -55,8 +55,8 @@
           ></path>
         </svg>
       </a>
-    </div>
-    <a href="https://www.instagram.com/nickmack41/" target="_blank">
+    </div> -->
+    <!-- <a href="https://www.instagram.com/nickmack41/" target="_blank">
       <div class="instagram">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -70,5 +70,5 @@
         </svg>
       </div>
     </a>
-  </div>
+  </div> -->
 </template>
