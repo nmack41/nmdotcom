@@ -43,7 +43,7 @@
       <div v-for="(publish, index) in pub" :key="index">
         <p class="mt-2">
           <a
-            class="text-black-500 hover:text-green-700"
+            class="text-black-800 hover:text-green-700"
             :href="publink[index]"
             target="_blank"
             >{{ publish }}</a
@@ -92,6 +92,7 @@ export default {
         "CPR & AED – American Red Cross",
       ],
       pub: [
+        "Merrigan, J., Strang, A., Eckerle, J., Mackowski, N., Hierholzer, K., Ray, N., Smith, R., Hagen, J. and Briggs, R., 2024. Countermovement jump force-time curve analyses: reliability and comparability across force plate systems. The Journal of Strength & Conditioning Research, 38(1), pp.30-37.",
         "Merrigan, J., Stute, N., Eckerle, J.,Mackowski, N., Walters, J., O’Connor, M., Barrett, K., Robert, R., Strang, A. and Hagen, J., 2022. Reliability and Validity of Contemporary Bioelectrical Impedance Analysis Devices for Body Composition Assessment. Journal of Exercise and Nutrition, 5(4).",
         "Hierholzer K., Briggs R., Tolston M., Mackowski N., Eckerle J., O’Connor M., Barrett K., Smith R., Strang A., Heart Rate Variability: A Longitudinal Comparison of Commercial Devices for Individual and Group Stress-Response, Advances in Applied Physiology. Volume 7, Issue 2, December 2022, pp. 26-33. doi: 10.11648/j.aap.20220702.12",
         "Stute NL, Szeghy RE, Mackowski NS. All is fair in menstruation, POTS and… war? J Physiol. 2022 Aug 1. doi: 10.1113/JP283297. Epub ahead of print. PMID: 35913261.",
@@ -102,6 +103,7 @@ export default {
         "Harshman, S.W., Browder, A.B., Davidson, C.N., Pitsch, R.L., Strayer, K.E., Schaeublin, N.M., Phelps, M.S., O’Connor, M.L., Mackowski, N.S., Barrett, K.N. and Eckerle, J.J., 2021. The impact of nutritional supplementation on sweat metabolomic content: a proof-of-concept study. Frontiers in Chemistry, 9, p.255.",
       ],
       publink: [
+        "https://journals.lww.com/nsca-jscr/abstract/2024/01000/countermovement_jump_force_time_curve_analyses_.4.aspx",
         "https://www.journalofexerciseandnutrition.com/index.php/JEN/article/view/133",
         "https://www.sciencepublishinggroup.com/journal/paperinfo?journalid=387&doi=10.11648/j.aap.20220702.12",
         "https://physoc.onlinelibrary.wiley.com/doi/10.1113/JP283297",
