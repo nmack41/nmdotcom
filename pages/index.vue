@@ -43,7 +43,7 @@
       <div v-for="(publish, index) in pub" :key="index">
         <p class="mt-2">
           <a
-            class="text-black-800 hover:text-green-700"
+            class="text-black hover:text-green-700"
             :href="publink[index]"
             target="_blank"
             >{{ publish }}</a
@@ -56,7 +56,7 @@
       <div v-for="(abs, index) in abstract" :key="index">
         <p class="mt-2">
           <a
-            class="text-black-500 hover:text-green-700"
+            class="text-black hover:text-green-700"
             :href="abstractlink[index]"
             >{{ abs }}</a
           >
