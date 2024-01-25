@@ -13,18 +13,18 @@ GitHub: https://github.com/logos
         <Social />
       </div>
       <div class="ml-auto flex">
+        <NuxtLink
+          class="link"
+          to="/contactme"
+          >Contact Me</NuxtLink
+        >
         <!-- <NuxtLink
-          class="text-white text-sm ml-6 transition-all duration-300 hover:font-bold"
-          to="/newsletter"
-          >Newsletter</NuxtLink
-        > -->
-        <!-- <NuxtLink
-          class="text-white text-sm ml-6 transition-all duration-300 hover:font-bold"
+          class="link"
           to="/blog"
           >Blog</NuxtLink
         > -->
         <NuxtLink
-          class="text-white text-sm ml-6 transition-all duration-300 hover:font-bold"
+          class="link"
           to="/"
           >About Nick</NuxtLink
         >
@@ -36,4 +36,8 @@ GitHub: https://github.com/logos
 .navbar-item-right:hover {
   font-weight: bold;
 }
-</style>
+
+.link {
+  @apply text-white text-sm ml-6 transition-all duration-300 hover:font-bold
+}
+</style> 

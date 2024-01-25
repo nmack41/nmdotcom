@@ -11,3 +11,11 @@
     </footer>
   </div>
 </template>
+
+
+<script setup>
+useHead ({
+  titleTemplate: '%s - Nick Mackowski'
+})
+
+</script>
