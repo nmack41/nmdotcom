@@ -32,12 +32,16 @@ GitHub: https://github.com/logos
     </nav>
   </header>
 </template>
+
 <style scoped>
-.navbar-item-right:hover {
-  font-weight: bold;
+.link { 
+  color: white; 
+  font-size: 0.875rem; 
+  margin-left: 1.5rem;
+  transition: all 0.3s; 
 }
 
-.link {
-  @apply text-white text-sm ml-6 transition-all duration-300 hover:font-bold
+.link:hover {
+  font-weight: bold;
 }
-</style> 
+</style>
