@@ -86,6 +86,7 @@ export default {
         "Proficient in a variety of performance technologies (e.g. force plates, velocity-based training devices, AMS)",
       ],
       certs: [
+        "ScrumAlliance Certified Scrum Master",
         "CompTIA Security+",
         "Microsoft Certified: Azure Administrator Associate",
         "Certified Strength and Conditioning Speciapst (CSCS) – National Strength & Conditioning Association (NSCA)",
