@@ -136,8 +136,10 @@ export default {
         {
           exptitle:
             "Sr. Analyst, Data Engineering – Logistics Management Institute (LMI)",
-          expdesc:
-            "I oversee and ensure the efficient management of ETL feeds, leveraging tools such as Informatica PowerCenter. My responsibilities also involve conducting investigations and rectifying any ETL failures. I utilize Teradata and Oracle SQL and for a variety of tasks, including the updating, removal, and retrieval of information from databases. In addition, I perform file alterations using the Linux command line. Furthermore, I work with customers to ensure their data management needs are satisfied.",
+          expdesc: [
+            "Supporting NASA: In my role as a Human Capital Data Analyst, I utilized R for data transformation and manipulation, supporting accurate analysis for human capital initiatives. I developed and maintained comprehensive dashboards using Tableau, providing actionable insights for strategic decision-making. As the primary data expert in meetings, I collaborated with cross-functional teams to seamlessly integrate human capital data solutions",
+            "Supporting Air Force: I oversaw and ensured the efficient management of ETL feeds, leveraging tools such as Informatica PowerCenter. My responsibilities also involved conducting investigations and rectifying any ETL failures. I utilized Teradata and Oracle SQL for a variety of tasks, including the updating, removal, and retrieval of information from databases. In addition, I performed file alterations using the Linux command line. Furthermore, I worked with customers to ensure their data management needs were satisfied.",
+          ],
         },
         {
           exptitle:
