@@ -135,9 +135,9 @@ export default {
       exp: [
         {
           exptitle:
-            "Sr. Analyst, Data Engineering – Supporting NASA - Logistics Management Institute (LMI)",
+            "Sr. Analyst, Human Capital Analyst / People Analytics Data Analyst – Supporting NASA - Logistics Management Institute (LMI)",
           expdesc:
-            "In my role as a Human Capital Data Analyst, I utilized R for data transformation and manipulation, supporting accurate analysis for human capital initiatives. I developed and maintained comprehensive dashboards using Tableau, providing actionable insights for strategic decision-making. As the primary data expert in meetings, I collaborated with cross-functional teams to seamlessly integrate human capital data solutions",
+            "I collaborated with Executive Services, Talent Learning & Development, and Talent Management to identify critical business challenges and deliver actionable insights through data visualization, dashboarding, automation, and reporting. Utilizing tools such as SQL, R, Python, and Tableau, I extracted, transformed, and visualized data to support human capital initiatives and provide strategic insights. Additionally, I conducted attrition analysis for Executive Services and created data dictionaries and process documentation to ensure clarity and consistency among the People Analytics team.",
         },
         {
           exptitle:
