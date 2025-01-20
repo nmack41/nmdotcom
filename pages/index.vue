@@ -69,6 +69,14 @@
         <p class="mt-2">{{ edu }}</p>
       </div>
     </div>
+    <div class="mb-8">
+      <h2 class="font-bold text-xl">Awards</h2>
+      <img
+        class="w-full max-w-md h-auto"
+        src="assets/top_100_badge_2024.png"
+        alt="top_100_badge"
+      />
+    </div>
   </div>
 </template>
 
