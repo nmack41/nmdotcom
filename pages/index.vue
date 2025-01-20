@@ -90,8 +90,6 @@ export default {
         "CompTIA Security+",
         "Microsoft Certified: Azure Administrator Associate",
         "Certified Strength and Conditioning Speciapst (CSCS) – National Strength & Conditioning Association (NSCA)",
-        "First Aid – American Red Cross",
-        "CPR & AED – American Red Cross",
       ],
       pub: [
         "Merrigan, J., Strang, A., Eckerle, J., Mackowski, N., Hierholzer, K., Ray, N., Smith, R., Hagen, J. and Briggs, R., 2024. Countermovement jump force-time curve analyses: reliability and comparability across force plate systems. The Journal of Strength & Conditioning Research, 38(1), pp.30-37.",
@@ -135,7 +133,7 @@ export default {
       exp: [
         {
           exptitle:
-            "Sr. Analyst, Human Capital Analyst / People Analytics Data Analyst – Supporting NASA - Logistics Management Institute (LMI)",
+            "Sr. Analyst, Human Capital Analyst / People Analytics Data Analyst – Supporting NASA -npm Logistics Management Institute (LMI)",
           expdesc:
             "I collaborate with Executive Services, Talent Learning & Development, and Talent Management to identify critical business challenges and deliver actionable insights through data visualization, dashboarding, automation, and reporting. Utilizing tools such as SQL, R, Python, and Tableau, I extract, transform, and visualize data to support human capital initiatives and provide strategic insights. Additionally, I conduct attrition analysis for Executive Services and create data dictionaries and process documentation to ensure clarity and consistency among the People Analytics team.",
         },
