@@ -10,7 +10,7 @@
   },
   "engines": {
     "node": ">=18.0.0"
-},
+  },
   "devDependencies": {
     "@nuxt/content": "^2.8.5",
     "@nuxt/devtools": "^0.0.1",
@@ -23,8 +23,13 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.6.5",
+    "@nuxtjs/proxy": "^2.1.0",
+    "axios": "^1.8.1",
+    "chart.js": "^4.4.8",
     "lodash.pick": "^3.1.0",
+    "moment": "^2.30.1",
     "node": "^21.6.1",
+    "papaparse": "^5.5.2",
     "tw-elements": "^1.0.0-beta2",
     "vite": "^5.0.12",
     "vue-router": "^4.0.13"

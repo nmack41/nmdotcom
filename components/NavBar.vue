@@ -23,22 +23,22 @@ GitHub: https://github.com/logos
           to="/blog"
           >Blog</NuxtLink
         > -->
-        <NuxtLink
-          class="link"
-          to="/"
-          >About Nick</NuxtLink
+        <NuxtLink class="link" to="/view_your_climbs"
+          >View Your Climbs</NuxtLink
         >
+        <NuxtLink class="link" to="/climbing_dashboard">Climbing</NuxtLink>
+        <NuxtLink class="link" to="/">About Nick</NuxtLink>
       </div>
     </nav>
   </header>
 </template>
 
 <style scoped>
-.link { 
-  color: white; 
-  font-size: 0.875rem; 
+.link {
+  color: white;
+  font-size: 0.875rem;
   margin-left: 1.5rem;
-  transition: all 0.3s; 
+  transition: all 0.3s;
 }
 
 .link:hover {
