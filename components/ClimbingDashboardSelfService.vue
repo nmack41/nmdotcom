@@ -4,8 +4,6 @@
       <h1>Mountain Project Climbing Analysis</h1>
       <p>Track your climbing progress</p>
     </div>
-
-    <!-- User Input Form -->
     <div class="input-form" v-if="!dataLoaded">
       <div class="form-card">
         <h3>Enter Your Mountain Project Info</h3>

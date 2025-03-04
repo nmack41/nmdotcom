@@ -84,11 +84,11 @@ export default {
   methods: {
     async fetchDashboardData() {
       try {
-        // 1. Fetch data from the server-side API endpoint that returns parsed climbing data
+        // Fetch data from the server-side API endpoint that returns parsed climbing data
         const response = await axios.get("/api/tick-export");
         const data = response.data;
 
-        // 2. Update data properties based on the API response
+        // Update data properties based on the API response
         this.totalClimbs = data.total_climbs;
         this.totalSends = data.total_sends;
 
@@ -107,7 +107,7 @@ export default {
         this.sendGradeData = data.send_grades || [];
         this.timeData = data.climbs_over_time || {};
 
-        // 3. Create charts after data is loaded
+        // Create charts after data is loaded
         this.createBarChart();
         this.createLineChart();
       } catch (error) {
@@ -205,8 +205,7 @@ export default {
         this.timeChart.destroy();
       }
 
-      // Group climbs by year rather than by exact month
-      // 1. Build an object like { '2024': totalClimbsIn2024, '2025': totalClimbsIn2025, ... }
+      // Group climbs by year rather than by exact month, build an object like { '2024': totalClimbsIn2024, '2025': totalClimbsIn2025, ... }
       const yearCounts = {};
       for (const [dateStr, count] of Object.entries(this.timeData)) {
         const year = moment(dateStr).format("YYYY");
@@ -216,8 +215,7 @@ export default {
         yearCounts[year] += count;
       }
 
-      // 2. Convert that object into a sorted array of [year, count]
-      //    so that older years appear first
+      // Convert that object into a sorted array of [year, count] so that older years appear first
       const sortedYearData = Object.entries(yearCounts).sort((a, b) =>
         a[0].localeCompare(b[0])
       );
