@@ -25,6 +25,11 @@ GitHub: https://github.com/logos
         > -->
         <NuxtLink
           class="link"
+          to="/climbing_dashboard"
+          >Climbing</NuxtLink
+        >
+        <NuxtLink
+          class="link"
           to="/"
           >About Nick</NuxtLink
         >
