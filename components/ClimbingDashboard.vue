@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <div class="header">
-      <h1><b>Climbing Journey</b></h1>
+      <h1>Climbing Journey</h1>
       <p>
         Tracking progress one clip at a time based on Mountain Project ticks
       </p>
@@ -15,6 +15,7 @@
       <div class="stat-card">
         <h3>Total Sends</h3>
         <div class="stat-value">{{ totalSends }}</div>
+        <div class="stat-note">(Onsight, Flash, Redpoint, Pinkpoint)</div>
       </div>
     </div>
 
@@ -76,6 +77,7 @@ export default {
       timeData: {},
       gradeChart: null,
       timeChart: null,
+      debugInfo: null,
     };
   },
   mounted() {
@@ -87,6 +89,8 @@ export default {
         // Fetch data from the server-side API endpoint that returns parsed climbing data
         const response = await axios.get("/api/tick-export");
         const data = response.data;
+
+        console.log("Received dashboard data:", data);
 
         // Update data properties based on the API response
         this.totalClimbs = data.total_climbs;
@@ -112,6 +116,7 @@ export default {
         this.createLineChart();
       } catch (error) {
         console.error("Error loading dashboard data:", error);
+        this.debugInfo = `Error: ${error.toString()}`;
       }
     },
 
@@ -120,6 +125,11 @@ export default {
     },
 
     createBarChart() {
+      if (!this.$refs.gradeChart) {
+        console.error("Grade chart reference not found");
+        return;
+      }
+
       // Define the exact order of grades you want to show
       const GRADE_ORDER = [
         "5.6",
@@ -156,6 +166,10 @@ export default {
         ? this.sendGradeData
         : this.gradeData;
 
+      console.log("Grade data being rendered:", this.gradeData);
+      console.log("Send grades data being rendered:", this.sendGradeData);
+      console.log("Data used for chart:", dataToUse);
+
       // Convert the array [ [grade, count], ... ] into a lookup object for quick access
       const gradeCounts = {};
       dataToUse.forEach(([grade, count]) => {
@@ -168,6 +182,8 @@ export default {
         grade,
         gradeCounts[grade] || 0,
       ]);
+
+      console.log("Final ordered data for chart:", orderedGradeData);
 
       this.gradeChart = new Chart(ctx, {
         type: "bar",
@@ -198,6 +214,11 @@ export default {
     },
 
     createLineChart() {
+      if (!this.$refs.timeChart) {
+        console.error("Time chart reference not found");
+        return;
+      }
+
       const ctx = this.$refs.timeChart.getContext("2d");
 
       // Destroy any existing chart instance
@@ -208,7 +229,12 @@ export default {
       // Group climbs by year rather than by exact month, build an object like { '2024': totalClimbsIn2024, '2025': totalClimbsIn2025, ... }
       const yearCounts = {};
       for (const [dateStr, count] of Object.entries(this.timeData)) {
-        const year = moment(dateStr).format("YYYY");
+        if (!dateStr) continue;
+
+        const year = moment(dateStr).isValid()
+          ? moment(dateStr).format("YYYY")
+          : "Unknown";
+
         if (!yearCounts[year]) {
           yearCounts[year] = 0;
         }
@@ -220,7 +246,9 @@ export default {
         a[0].localeCompare(b[0])
       );
 
-      // 3. Create the line chart with years on the x-axis
+      console.log("Time data for chart:", sortedYearData);
+
+      // Create the line chart with years on the x-axis
       this.timeChart = new Chart(ctx, {
         type: "line",
         data: {
