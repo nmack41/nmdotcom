@@ -30,10 +30,14 @@
         <button
           @click="loadDashboard"
           class="load-btn"
-          :disabled="!userId || !userName"
+          :disabled="!userId || !userName || loading"
         >
-          Load Dashboard
+          {{ loading ? "Loading..." : "Load Dashboard" }}
         </button>
+        <div v-if="debugInfo" class="debug-info">
+          <p>Debug Info:</p>
+          <pre>{{ debugInfo }}</pre>
+        </div>
       </div>
       <div class="example-section">
         <p>Need help finding your Mountain Project ID?</p>
@@ -73,7 +77,7 @@
         <div class="stat-card">
           <h3>Total Sends</h3>
           <div class="stat-value">{{ totalSends }}</div>
-          <div class="stat-note">(OS, Flash, Redpoint)</div>
+          <div class="stat-note">(Onsight, Flash, Redpoint, Pinkpoint)</div>
         </div>
         <div class="stat-card">
           <h3>Most Common Grade</h3>
@@ -140,6 +144,7 @@ export default {
       dataLoaded: false,
       loading: false,
       error: null,
+      debugInfo: null,
 
       // Climbing data
       totalClimbs: "--",
@@ -165,20 +170,37 @@ export default {
 
       this.loading = true;
       this.error = null;
+      this.debugInfo = null;
 
       try {
+        // Log request parameters for debugging
+        console.log(
+          `Requesting data for userId: ${this.userId}, userName: ${this.userName}`
+        );
+
         // Fetch data from API endpoint with user parameters
-        const response = await axios.get("/api/tick-export", {
+        const response = await axios.get("/api/tick-export-self-service", {
           params: {
             userId: this.userId,
             userName: this.userName,
           },
         });
 
+        // Store raw response for debugging
+        console.log("Received response:", response);
+        this.debugInfo = `Status: ${
+          response.status
+        }, Data type: ${typeof response.data}`;
+
         const data = response.data;
 
         if (data.error) {
           throw new Error(data.details || data.error);
+        }
+
+        // Check if essential data is present
+        if (!data.total_climbs && data.total_climbs !== 0) {
+          throw new Error("Invalid data format returned from server");
         }
 
         // Update data properties
@@ -192,7 +214,7 @@ export default {
             ? data.grades[0][0]
             : "--";
 
-        this.recentClimbs = data.recent_climbs;
+        this.recentClimbs = data.recent_climbs || [];
         this.gradeData = data.grades || [];
         this.sendGradeData = data.send_grades || [];
         this.timeData = data.climbs_over_time || {};
@@ -207,6 +229,7 @@ export default {
       } catch (error) {
         console.error("Error loading dashboard data:", error);
         this.error = `Failed to load climbing data: ${error.message}`;
+        this.debugInfo = `Error: ${error.toString()}`;
       } finally {
         this.loading = false;
       }
@@ -218,6 +241,7 @@ export default {
       this.userName = "";
       this.dataLoaded = false;
       this.error = null;
+      this.debugInfo = null;
 
       // Clean up charts
       if (this.gradeChart) {
@@ -232,10 +256,17 @@ export default {
     },
 
     updateGradeChart() {
-      this.createBarChart();
+      if (this.dataLoaded) {
+        this.createBarChart();
+      }
     },
 
     createBarChart() {
+      if (!this.$refs.gradeChart) {
+        console.error("Grade chart reference not found");
+        return;
+      }
+
       const GRADE_ORDER = [
         "5.6",
         "5.7",
@@ -259,6 +290,11 @@ export default {
         "5.13d",
       ];
 
+      // Log the data for debugging
+      console.log("Grade data being rendered:", this.gradeData);
+      console.log("Send grades data being rendered:", this.sendGradeData);
+      console.log("Show sends only:", this.showSendsOnly);
+
       const ctx = this.$refs.gradeChart.getContext("2d");
 
       if (this.gradeChart) {
@@ -269,6 +305,8 @@ export default {
       const dataToUse = this.showSendsOnly
         ? this.sendGradeData
         : this.gradeData;
+
+      console.log("Data used for chart:", dataToUse);
 
       // Convert to lookup object
       const gradeCounts = {};
@@ -281,6 +319,8 @@ export default {
         grade,
         gradeCounts[grade] || 0,
       ]);
+
+      console.log("Final ordered data for chart:", orderedGradeData);
 
       this.gradeChart = new Chart(ctx, {
         type: "bar",
@@ -311,6 +351,11 @@ export default {
     },
 
     createLineChart() {
+      if (!this.$refs.timeChart) {
+        console.error("Time chart reference not found");
+        return;
+      }
+
       const ctx = this.$refs.timeChart.getContext("2d");
 
       if (this.timeChart) {
@@ -320,7 +365,12 @@ export default {
       // Group by year
       const yearCounts = {};
       for (const [dateStr, count] of Object.entries(this.timeData)) {
-        const year = moment(dateStr).format("YYYY");
+        if (!dateStr) continue;
+
+        const year = moment(dateStr).isValid()
+          ? moment(dateStr).format("YYYY")
+          : "Unknown";
+
         if (!yearCounts[year]) {
           yearCounts[year] = 0;
         }
@@ -416,6 +466,15 @@ export default {
 .load-btn:disabled {
   background-color: #aaa;
   cursor: not-allowed;
+}
+.debug-info {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #666;
+  overflow-x: auto;
 }
 .example-section {
   background-color: #f5f5f5;
@@ -560,25 +619,5 @@ export default {
 .recent-climbs h3 {
   margin-top: 0;
   color: #555;
-}
-.climb-list {
-  list-style-type: none;
-  padding: 0;
-}
-.climb-item {
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-}
-.climb-name {
-  font-weight: bold;
-}
-.climb-details {
-  color: #777;
-  font-size: 14px;
-}
-@media (max-width: 768px) {
-  .chart-card {
-    width: 100%;
-  }
 }
 </style>
