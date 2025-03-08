@@ -42,11 +42,11 @@
       </div>
     </div>
 
-    <div class="recent-climbs">
-      <h3>Recent Sport Climbs</h3>
+    <div class="Climbs">
+      <h3>Sport Climbs</h3>
       <ul class="climb-list">
         <li
-          v-for="(climb, index) in recentClimbs"
+          v-for="(climb, index) in orderedClimbs"
           :key="index"
           class="climb-item"
         >
@@ -70,7 +70,7 @@ export default {
       totalClimbs: "--",
       totalSends: "--",
       commonGrade: "--",
-      recentClimbs: [],
+      orderedClimbs: [],
       gradeData: [],
       sendGradeData: [],
       showSendsOnly: true,
@@ -104,7 +104,7 @@ export default {
             ? data.grades[0][0]
             : "--";
 
-        this.recentClimbs = data.recent_climbs;
+        this.orderedClimbs = data.ordered_climbs;
 
         // Store both all attempts and sends-only grade data
         this.gradeData = data.grades || [];
@@ -366,14 +366,14 @@ export default {
   font-size: 14px;
   color: #555;
 }
-.recent-climbs {
+.ordered-climbs {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
 }
-.recent-climbs h3 {
+.ordered-climbs h3 {
   margin-top: 0;
   color: #555;
 }

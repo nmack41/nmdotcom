@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
     const total_climbs = rows.length;
 
-    const sendStyles = ["Onsight", "Flash", "Redpoint"];
+    const sendStyles = ["Onsight", "Flash", "Redpoint", "Pinkpoint"];
     const total_sends = rows.filter((row) =>
       sendStyles.includes(row["Lead Style"])
     ).length;
@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
     );
 
     rows.sort((a, b) => new Date(b.Date) - new Date(a.Date));
-    const recent_climbs = rows.slice(0, 5);
+    const ordered_climbs = rows;
 
     const climbs_over_time = {};
     rows.forEach((row) => {
@@ -55,7 +55,7 @@ export default defineEventHandler(async (event) => {
       total_sends,
       grades: gradesArray,
       send_grades: sendGradesArray,
-      recent_climbs,
+      ordered_climbs,
       climbs_over_time,
     };
   } catch (error) {

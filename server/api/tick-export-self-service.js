@@ -56,19 +56,6 @@ export default defineEventHandler(async (event) => {
       }
     }
 
-    // Check if response is HTML instead of CSV
-    if (
-      typeof csvText === "string" &&
-      (csvText.includes("<!DOCTYPE html>") || csvText.includes("<html>"))
-    ) {
-      console.log("Received HTML instead of CSV");
-      return {
-        error: "Invalid user data",
-        details:
-          "Could not retrieve climbing data. Please check your User ID and Username.",
-      };
-    }
-
     // Check if we got data
     if (!csvText || csvText.trim() === "") {
       console.log("Received empty response");
