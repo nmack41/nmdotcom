@@ -1,6 +1,6 @@
 <template>
   <div>
-    <climbing-dashboard />
+    <ClimbingDashboard :isSelfService="false" />
   </div>
 </template>
 
