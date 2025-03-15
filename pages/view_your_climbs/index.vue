@@ -1,15 +1,15 @@
 <template>
   <div>
-    <climbing-dashboard-self-service />
+    <ClimbingDashboard :isSelfService="true" />
   </div>
 </template>
 
 <script>
-import ClimbingDashboardSelfService from "@/components/ClimbingDashboardSelfService.vue";
+import ClimbingDashboard from "@/components/ClimbingDashboard.vue";
 
 export default {
   components: {
-    ClimbingDashboardSelfService,
+    ClimbingDashboard,
   },
 };
 </script>
