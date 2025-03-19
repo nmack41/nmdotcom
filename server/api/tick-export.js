@@ -1,10 +1,5 @@
 import Papa from "papaparse";
 
-/**
- * Parses a Mountain Project location string to extract Area, Crag, and Wall components
- * @param {string} location - The full location string from Mountain Project
- * @returns {Object} An object with area, crag and wall properties
- */
 function parseLocation(location) {
   const result = {
     area: "",
@@ -14,27 +9,10 @@ function parseLocation(location) {
 
   if (!location) return result;
 
-  // Split the location by ">" and trim each part
-  const parts = location.split(">").map((part) => part.trim());
+  // Split the location by ">"
+  const parts = location.split(">");
 
-  // Need at least 2 parts to have any meaningful location data
-  if (parts.length < 2) return result;
-
-  // For Red River Gorge locations
-  if (parts.length >= 2 && parts[1] === "Red River Gorge") {
-    result.area = "Red River Gorge";
-
-    if (parts.length >= 3) {
-      // Example: Kentucky > Red River Gorge > Bald Rock Recreational Preserve (BRRP)
-      result.crag = parts[2];
-
-      if (parts.length >= 4) {
-        // Example: Kentucky > Red River Gorge > Bald Rock Recreational Preserve (BRRP) > Chocolate Factory
-        result.wall = parts[3];
-      }
-    }
-  } else if (parts.length >= 2) {
-    // For locations outside Red River Gorge
+  if (parts.length >= 2) {
     result.area = parts[1];
 
     if (parts.length >= 3) {
@@ -49,11 +27,7 @@ function parseLocation(location) {
   return result;
 }
 
-/**
- * Normalizes a grade by handling slashes like "5.11a/b" -> "5.11b"
- * @param {string} grade - The climbing grade to normalize
- * @returns {string} The normalized grade
- */
+// Normalizes a grade by handling slashes like "5.11a/b" -> "5.11b"
 function normalizeGrade(grade) {
   if (!grade || typeof grade !== "string") return grade;
 
@@ -66,17 +40,9 @@ function normalizeGrade(grade) {
   return grade;
 }
 
-/**
- * Gets the lead style from a row, handling different possible field names
- * @param {Object} row - A data row from Mountain Project CSV
- * @returns {string|null} The lead style or null if not found
- */
+// Gets the lead style from a row, handling different possible field names
 function getLedStyle(row) {
-  const possibleFields = ["Lead Style", "LeadStyle", "leadstyle", "Lead_Style"];
-  for (const field of possibleFields) {
-    if (row[field] !== undefined) return row[field];
-  }
-  return null;
+  return row["Lead Style"] !== undefined ? row["Lead Style"] : null;
 }
 
 export default defineEventHandler(async (event) => {
@@ -89,17 +55,13 @@ export default defineEventHandler(async (event) => {
   let url =
     "https://www.mountainproject.com/user/201253016/nick-mackowski/tick-export";
 
-  // If userId and userName are provided, use them instead (self-service mode)
+  // If userId and userName are provided, use them instead
   if (userId && userName) {
-    console.log(
-      `Received request for userId: ${userId}, userName: ${userName}`
-    );
     url = `https://www.mountainproject.com/user/${userId}/${userName}/tick-export`;
-    console.log(`Fetching data from: ${url}`);
   }
 
   try {
-    // Add timeout and retry logic for more reliable fetching
+    // Add timeout for more reliable fetching
     const fetchWithTimeout = async (url, options = {}, timeout = 10000) => {
       const controller = new AbortController();
       const id = setTimeout(() => controller.abort(), timeout);
@@ -117,23 +79,7 @@ export default defineEventHandler(async (event) => {
       }
     };
 
-    // Try up to 3 times with increasing timeouts
-    let csvText;
-    let attempts = 0;
-    const maxAttempts = 3;
-
-    while (attempts < maxAttempts) {
-      try {
-        csvText = await fetchWithTimeout(url, {}, 10000 * (attempts + 1));
-        break;
-      } catch (error) {
-        attempts++;
-        console.log(`Attempt ${attempts} failed: ${error.message}`);
-        if (attempts >= maxAttempts) throw error;
-        // Wait before retry
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      }
-    }
+    const csvText = await fetchWithTimeout(url);
 
     // Check if we got data
     if (!csvText || csvText.trim() === "") {
@@ -164,21 +110,11 @@ export default defineEventHandler(async (event) => {
         row.Rating
     );
 
-    console.log(`Parsed ${rows.length} valid rows`);
-
-    if (!rows.length) {
-      return {
-        error: "No climbing data",
-        details:
-          "No valid climbing data found. Make sure you've logged climbs on Mountain Project.",
-      };
-    }
-
-    // Process the data
+    // Output total number of climbs
     const total_climbs = rows.length;
 
-    // Define send styles - include boulder problems with V grades
-    const sendStyles = ["Onsight", "Flash", "Redpoint", "Pinkpoint", "Send"];
+    // Define send styles
+    const sendStyles = ["Onsight", "Flash", "Redpoint", "Pinkpoint"];
 
     // Count total sends properly, including boulder problems
     const total_sends = rows.filter((row) => {

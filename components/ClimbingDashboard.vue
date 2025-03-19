@@ -69,7 +69,7 @@
 
       <div class="stats-container">
         <div class="stat-card">
-          <h3>Total Sport Climbs</h3>
+          <h3>Total Climbs</h3>
           <div class="stat-value">{{ totalClimbs }}</div>
         </div>
         <div class="stat-card">
@@ -77,31 +77,14 @@
           <div class="stat-value">{{ totalSends }}</div>
           <div class="stat-note">(Onsight, Flash, Redpoint, Pinkpoint)</div>
         </div>
-        <div class="stat-card" v-if="commonGrade">
-          <h3>Most Common Grade</h3>
-          <div class="stat-value">{{ commonGrade }}</div>
-        </div>
       </div>
-
       <div class="chart-container">
         <div class="chart-card">
-          <div class="chart-header">
-            <h3>Climbs by Grade</h3>
-            <div class="toggle-container">
-              <label class="toggle">
-                <input
-                  type="checkbox"
-                  v-model="showSendsOnly"
-                  @change="updateGradeChart"
-                />
-                <span class="toggle-label">Sends Only</span>
-              </label>
-            </div>
-          </div>
+          <h3>Climbs by Grade</h3>
           <canvas ref="gradeChart"></canvas>
         </div>
         <div class="chart-card">
-          <h3>Progress Over Time</h3>
+          <h3>Climbs Per Year</h3>
           <canvas ref="timeChart"></canvas>
         </div>
       </div>
@@ -134,7 +117,7 @@
       </div>
 
       <div class="climbs-list">
-        <h3>Recent Climbs</h3>
+        <h3>Climbs</h3>
         <table class="climbs-table">
           <thead>
             <tr>
@@ -143,26 +126,20 @@
               <th>Rating</th>
               <th>Style</th>
               <th>Area</th>
+              <th>Notes</th>
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="(climb, index) in orderedClimbs.slice(0, 10)"
-              :key="index"
-            >
+            <tr v-for="(climb, index) in orderedClimbs" :key="index">
               <td>{{ climb.Date }}</td>
               <td class="route-name">{{ climb.Route }}</td>
               <td>{{ climb.Rating }}</td>
               <td>{{ climb["Lead Style"] }}</td>
               <td>{{ climb.Area }}</td>
+              <td>{{ climb.Notes }}</td>
             </tr>
           </tbody>
         </table>
-        <div class="view-all-container" v-if="orderedClimbs.length > 10">
-          <button @click="showAllClimbs = !showAllClimbs" class="view-all-btn">
-            {{ showAllClimbs ? "Show Less" : "View All Climbs" }}
-          </button>
-        </div>
       </div>
 
       <div class="all-climbs-table" v-if="showAllClimbs">
@@ -289,11 +266,9 @@ export default {
       // Climbing data
       totalClimbs: "--",
       totalSends: "--",
-      commonGrade: "--",
       orderedClimbs: [],
       gradeData: [],
       sendGradeData: [],
-      showSendsOnly: true,
       timeData: {},
       popularAreas: [],
       popularCrags: [],
@@ -328,17 +303,24 @@ export default {
     },
     uniqueGrades() {
       const grades = new Set();
+
       this.orderedClimbs.forEach((climb) => {
         if (climb.Rating) grades.add(climb.Rating);
       });
+
       return [...grades].sort((a, b) => {
-        // Try to sort climbing grades in a logical order
-        const aNum = parseFloat(a.replace(/[^\d.]/g, ""));
-        const bNum = parseFloat(b.replace(/[^\d.]/g, ""));
+        const aStr = String(a);
+        const bStr = String(b);
+
+        const aNum = parseFloat(aStr.replace(/[^\d.]/g, ""));
+        const bNum = parseFloat(bStr.replace(/[^\d.]/g, ""));
+
         if (!isNaN(aNum) && !isNaN(bNum)) {
           if (aNum !== bNum) return aNum - bNum;
         }
-        return a.localeCompare(b);
+
+        // Fall back to string comparison
+        return aStr.localeCompare(bStr);
       });
     },
     uniqueStyles() {
@@ -450,12 +432,6 @@ export default {
         // Set dashboard data
         this.totalClimbs = data.total_climbs;
         this.totalSends = data.total_sends;
-        this.commonGrade =
-          data.send_grades && data.send_grades.length > 0
-            ? data.send_grades[0][0]
-            : data.grades && data.grades.length > 0
-            ? data.grades[0][0]
-            : "";
 
         // Process climb data
         this.orderedClimbs = data.all_climbs || data.ordered_climbs || [];
@@ -498,10 +474,21 @@ export default {
     },
 
     createBarChart() {
+      // Exit early if the chart element doesn't exist
       if (!this.$refs.gradeChart) {
+        console.log("Chart reference not found");
         return;
       }
 
+      const ctx = this.$refs.gradeChart.getContext("2d");
+
+      // Clear any existing chart
+      if (this.gradeChart) {
+        this.gradeChart.destroy();
+        this.gradeChart = null;
+      }
+
+      // Define the order of climbing grades we want to display
       const GRADE_ORDER = [
         "5.6",
         "5.7",
@@ -525,48 +512,117 @@ export default {
         "5.13d",
       ];
 
-      const ctx = this.$refs.gradeChart.getContext("2d");
+      // Prepare data for sends and attempts separately
+      let sendCounts = {};
+      let attemptCounts = {};
 
-      if (this.gradeChart) {
-        this.gradeChart.destroy();
-      }
-
-      const dataToUse = this.showSendsOnly
-        ? this.sendGradeData
-        : this.gradeData;
-
-      const gradeCounts = {};
-      dataToUse.forEach(([grade, count]) => {
-        gradeCounts[grade] = count;
+      // Initialize with zero counts for all grades
+      GRADE_ORDER.forEach((grade) => {
+        sendCounts[grade] = 0;
+        attemptCounts[grade] = 0;
       });
 
-      const orderedGradeData = GRADE_ORDER.map((grade) => [
-        grade,
-        gradeCounts[grade] || 0,
-      ]);
+      // Count sends (climbs where Lead Style is one of the send styles)
+      this.orderedClimbs.forEach((climb) => {
+        if (!climb.Rating) return;
 
+        const grade = climb.Rating.toString();
+        if (!GRADE_ORDER.includes(grade)) return;
+
+        const style = climb["Lead Style"] || "";
+        const sendStyles = [
+          "Onsight",
+          "Flash",
+          "Redpoint",
+          "Pinkpoint",
+          "Send",
+        ];
+
+        // If it's a send, add to sends count, otherwise to attempts count
+        if (sendStyles.includes(style)) {
+          sendCounts[grade] += 1;
+        } else {
+          attemptCounts[grade] += 1;
+        }
+      });
+
+      // Prepare the datasets for the chart
+      const labels = GRADE_ORDER;
+      const sendsData = GRADE_ORDER.map((grade) => sendCounts[grade] || 0);
+      const attemptsData = GRADE_ORDER.map(
+        (grade) => attemptCounts[grade] || 0
+      );
+
+      // Create the stacked bar chart
       this.gradeChart = new Chart(ctx, {
         type: "bar",
         data: {
-          labels: orderedGradeData.map((item) => item[0]),
+          labels: labels,
           datasets: [
             {
-              label: "Climbs by Grade",
-              data: orderedGradeData.map((item) => item[1]),
-              backgroundColor: this.showSendsOnly ? "#2ECC71" : "#3498DB",
+              label: "Sends",
+              data: sendsData,
+              backgroundColor: "#2ECC71", // Green for sends
+              borderColor: "#27AE60",
+              borderWidth: 1,
+            },
+            {
+              label: "Attempts",
+              data: attemptsData,
+              backgroundColor: "#3498DB", // Blue for attempts
+              borderColor: "#2980B9",
+              borderWidth: 1,
             },
           ],
         },
         options: {
           responsive: true,
-          plugins: {
-            legend: {
-              display: false,
+          scales: {
+            x: {
+              stacked: true,
+              title: {
+                display: true,
+                text: "Climbing Grade",
+              },
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Number of Climbs",
+              },
             },
           },
-          scales: {
-            y: {
-              beginAtZero: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: "top",
+            },
+            tooltip: {
+              callbacks: {
+                // Custom tooltip to show both the count and percentage
+                afterLabel: function (context) {
+                  const datasetIndex = context.datasetIndex;
+                  const index = context.dataIndex;
+                  const grade = labels[index];
+                  const sends = sendCounts[grade] || 0;
+                  const attempts = attemptCounts[grade] || 0;
+                  const total = sends + attempts;
+
+                  if (datasetIndex === 0) {
+                    // Sends dataset
+                    return `${Math.round(
+                      (sends / total) * 100
+                    )}% of ${grade} climbs`;
+                  } else {
+                    // Attempts dataset
+                    return `${Math.round(
+                      (attempts / total) * 100
+                    )}% of ${grade} climbs`;
+                  }
+                },
+              },
             },
           },
         },
@@ -830,29 +886,51 @@ export default {
   margin-bottom: 15px;
 }
 
+.chart-legend {
+  display: flex;
+  gap: 15px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.color-box {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+.sends-color {
+  background-color: #2ecc71;
+}
+
+.attempts-color {
+  background-color: #3498db;
+}
+
 .chart-card h3 {
   margin-top: 0;
   color: #555;
 }
 
-.toggle-container {
+.radio-group {
   display: flex;
-  align-items: center;
+  gap: 15px;
 }
 
-.toggle {
-  display: inline-flex;
+.radio-label {
+  display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.toggle input {
-  margin-right: 8px;
-}
-
-.toggle-label {
-  font-size: 14px;
-  color: #555;
+.radio-text {
+  margin-left: 5px;
 }
 
 .locations-container {
