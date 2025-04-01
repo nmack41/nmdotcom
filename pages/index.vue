@@ -69,13 +69,27 @@
         <p class="mt-2">{{ edu }}</p>
       </div>
     </div>
-    <div class="mb-8">
-      <h2 class="font-bold text-xl">Awards</h2>
-      <img
-        class="w-full max-w-md h-auto"
-        src="assets/top_100_badge_2024.png"
-        alt="top_100_badge"
-      />
+    <h2 class="font-bold text-xl">Awards</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      <div class="flex flex-col items-center">
+        <img
+          class="w-full max-w-md h-auto"
+          src="assets/top_100_badge_2024.png"
+          alt="top_100_badge"
+        />
+        <p class="mt-2 text-center">Top 100 Analytics Professional 2024</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <img
+          class="w-full max-w-md h-auto"
+          src="assets/dayton_startup_weekend_2025/dry_guy.jpeg"
+          alt="top_100_badge"
+        />
+        <p class="mt-2 text-center">
+          Dayton Startup Weekend 2025 - 1st Place: Dry Guy - The plant health
+          monitor that also was the Crowd Favorite.
+        </p>
+      </div>
     </div>
   </div>
 </template>
